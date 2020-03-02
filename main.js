@@ -4,7 +4,7 @@ const sidebarUrl = 'sidebar.html'
 miro.onReady(() => {
   miro.initialize({
     extensionPoints: {
-      bottomBar: {
+      toolbar: {
         title: 'Importer',
         svgIcon: icon,
         onClick: function () {
