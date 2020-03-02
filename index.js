@@ -3,7 +3,7 @@ const icon24 = '<path fill="currentColor" fill-rule="nonzero" d="M24,0 C10.75056
 function run() {
 	miro.initialize({
 		extensionPoints: {
-			bottomBar: {
+			toolbar: {
 				title: 'Dribbble',
 				svgIcon: icon24,
 				onClick: () => {
