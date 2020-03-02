@@ -58,28 +58,5 @@
     </label><br><br>
     <button onclick="onCreateClick()">Create widgets from text</button>
 </div>
-<script>
-  const editorTextarea = document.querySelector('#editor')
-  const useRegexpCheckbox = document.querySelector('#use-regexp')
-  const splitStringInput = document.querySelector('#split-string')
-
-  async function onCreateClick() {
-    const text = editorTextarea.value
-    const useRegexp = useRegexpCheckbox.checked
-    const splitValue = splitStringInput.value
-    const splitter = useRegexp ? new RegExp(splitValue) : splitValue
-    const chunks = text.split(splitter)
-    let i = 0
-
-    for (let index = 0; index < chunks.length; index++) {
-      const chunk = chunks[index]
-      if (chunk.trim()) {
-        i++
-        miro.board.widgets.create({type:'sticker', text: chunk, x: i * 280})
-      }
-    }
-  }
-
-</script>
 </body>
 </html>
