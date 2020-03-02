@@ -8,7 +8,7 @@ miro.onReady(() => {
         toolbarSvgIcon: icon,
         librarySvgIcon: icon,
 				onClick: function () {
-					miro.board.openLibrary('library.html')
+					miro.board.openLibrary('The Noun Project', 'library.html')
 				}
 			}
 		}
