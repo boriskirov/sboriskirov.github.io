@@ -4,9 +4,10 @@ const sidebarUrl = 'sidebar.html'
 miro.onReady(() => {
   miro.initialize({
     extensionPoints: {
-      bottomBar: {
+      toolbar: {
         title: 'Importer',
-        svgIcon: icon,
+        toolbarSvgIcon: icon,
+        librarySvgIcon: icon,
         onClick: function () {
           miro.board.ui.openLeftSidebar(sidebarUrl)
         }
