@@ -159,6 +159,9 @@
                     stroke-miterlimit="10"></circle>
         </svg>
     </div> -->
+
+    
+    
     
 </div>
 <script>    
@@ -181,7 +184,7 @@
     }
     
     miro.onReady(() => {
-      miro.board.ui.initDraggableItemsContainer(document.body, options)  
+        miro.helpers.initScrollableContainerWithDraggableImages(itemsContainer, {draggableImageSelector: '.image-item'})
     })
   
     </script>
