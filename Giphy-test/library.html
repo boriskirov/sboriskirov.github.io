@@ -41,7 +41,7 @@
 
         .search-input {
             width: 252px;
-            margin: 24px;
+            margin: 8px 24px 24px 24px;
             height: 40px;
             padding: 0 10px;
             font-size: 16px;
@@ -89,13 +89,16 @@
             height: 24px;
             position: absolute;
             cursor: pointer;
-            top: 23px;
-            left: 255px;
+            top: 37px;
+            left: 272px;
             padding: 10px;
         }
 
         .search-button:hover {
             color: #2A79FF;
+        }
+        .figcaption {
+            display: none;
         }
 
         @keyframes rotate {
@@ -129,13 +132,13 @@
     </svg>
     <main>
       <form>
-        <label for="search">Search</label>
+        <h3 for="search">Search</h3>
         <input class="search-input" id="search" type="search" />
         <svg class="search-button" id="btnSearch">
             <use xlink:href="#search-icon">
         </svg>
       </form>
-      <div class="out"></div>
+      <div class="scrollable-container"><div class="out"></div></div>
     </main>
     <script>
       let APIKEY = "bKgN9fTDyt4siFR46DXdpXAONqESQz4v";
