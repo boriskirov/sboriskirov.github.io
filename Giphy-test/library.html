@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link type="text/css" href="https://miro.com/app/static/miro.uikit.css">
+    <script src="https://miro.com/app/static/sdk.1.1.js"></script>
+    <script src="https://unpkg.com/whatwg-fetch"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        h3 {
+            font-size: 16px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .scrollable-container {
+            height: calc(100% - 75px);
+            overflow: auto;
+            padding: 0 20px 30px 20px;
+            box-sizing: border-box;
+        }
+
+        .image-item {
+            vertical-align: top;
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            padding: 5px;
+        }
+
+        .search-input {
+            width: 252px;
+            margin: 24px;
+            height: 40px;
+            padding: 0 10px;
+            font-size: 16px;
+            color: #4a4a4a;
+            border: solid 1px #CCCCCC;
+            border-radius: 4px;
+            transition: border 0.15s cubic-bezier(0.2, 0.3, 0.25, 0.9);
+            outline: none;
+        }
+
+        .search-input:hover, .search-input:focus {
+            border: solid 1px #2A79FF;
+        }
+
+        .rtb-material-spinner {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .rtb-material-spinner-circular {
+            animation: rotate 2s linear infinite;
+            height: 100%;
+            transform-origin: center center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .rtb-material-spinner-path {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            animation: dash 1.5s ease-in-out infinite;
+            stroke-linecap: round;
+            stroke: #2A79FF;
+        }
+
+        .search-button {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            cursor: pointer;
+            top: 23px;
+            left: 255px;
+            padding: 10px;
+        }
+
+        .search-button:hover {
+            color: #2A79FF;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+            }
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+      <form>
+        <label for="search">Search</label>
+        <input id="search" type="search" />
+        <button id="btnSearch">Go</button>
+      </form>
+      <div class="out"></div>
+    </main>
+    <script>
+      let APIKEY = "bKgN9fTDyt4siFR46DXdpXAONqESQz4v";
+      // you will need to get your own API KEY
+      // https://developers.giphy.com/dashboard/
+      document.addEventListener("DOMContentLoaded", init);
+      function init() {
+        document.getElementById("btnSearch").addEventListener("click", ev => {
+          ev.preventDefault(); //to stop the page reload
+          let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=1&q=`;
+          let str = document.getElementById("search").value.trim();
+          url = url.concat(str);
+          console.log(url);
+          fetch(url)
+            .then(response => response.json())
+            .then(content => {
+              //  data, pagination, meta
+              console.log(content.data);
+              console.log("META", content.meta);
+              let fig = document.createElement("figure");
+              let img = document.createElement("img");
+              let fc = document.createElement("figcaption");
+              img.src = content.data[0].images.downsized.url;
+              img.alt = content.data[0].title;
+              fc.textContent = content.data[0].title;
+              fig.appendChild(img);
+              fig.appendChild(fc);
+              let out = document.querySelector(".out");
+              out.insertAdjacentElement("afterbegin", fig);
+              document.querySelector("#search").value = "";
+            })
+            .catch(err => {
+              console.error(err);
+            });
+        });
+      }
+    </script>
+  </body>
+</body>
+</html>
