@@ -158,6 +158,7 @@
     <script>
         // you will need to get your own API KEY
         // https://developers.giphy.com/dashboard/
+        var scrollableContainer = document.querySelector('.scrollable-container')
         let APIKEY = "p6vOL2rWYvEE6EpS783skSiHLB0Cgqqj";
         document.addEventListener("DOMContentLoaded", init);
         
@@ -196,6 +197,16 @@
                 });
           });
         }
+        function scrollHandler() {
+		var maxScroll = scrollableContainer.scrollHeight - scrollableContainer.offsetHeight
+		var currentScroll = scrollableContainer.scrollTop
+
+            if (maxScroll - currentScroll < PAGINATION_SCROLL_DELTA) {
+                if (!loading && hasMoreItems) {
+                    loadMoreImages()
+                }
+            }
+    	}
         </script>        
   </body>
 </body>
