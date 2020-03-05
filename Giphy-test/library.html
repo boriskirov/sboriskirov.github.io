@@ -161,6 +161,8 @@
         var scrollableContainer = document.querySelector('.scrollable-container')
         let APIKEY = "p6vOL2rWYvEE6EpS783skSiHLB0Cgqqj";
         document.addEventListener("DOMContentLoaded", init);
+
+        scrollableContainer.addEventListener('scroll', scrollHandler)
         
         function generateGif(gif, parentDiv) {
           let fig = document.createElement("figure");
