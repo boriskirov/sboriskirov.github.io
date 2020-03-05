@@ -161,13 +161,11 @@
         // https://developers.giphy.com/dashboard/
         let APIKEY = "p6vOL2rWYvEE6EpS783skSiHLB0Cgqqj";
         document.addEventListener("DOMContentLoaded", init);
-
-        var ENTER_KEYCODE = 13
-	    var PAGINATION_SCROLL_DELTA = 400
-    	var MAX_OFFSET = 200
         
         var scrollableContainer = document.querySelector('.scrollable-container')
+        
         scrollableContainer.addEventListener('scroll', scrollHandler)
+        var itemsContainer = document.querySelector('.items_container')
         
         function generateGif(gif, parentDiv) {
           let fig = document.createElement("figure");
