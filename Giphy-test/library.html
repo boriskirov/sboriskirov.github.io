@@ -156,7 +156,7 @@
             </div>
         </div>
     </main>
-    <!-- <script>
+    <script>
       let APIKEY = "p6vOL2rWYvEE6EpS783skSiHLB0Cgqqj";
       // you will need to get your own API KEY
       // https://developers.giphy.com/dashboard/
@@ -191,51 +191,6 @@
             });
         });
       }
-    </script> -->
-
-<script>
-    const API_KEY = 'p6vOL2rWYvEE6EpS783skSiHLB0Cgqqj';
-    document.addEventListener('DOMContentLoaded', init);
-    
-    function init() {
-      const searchButton = document.querySelector('#btnSearch');
-      searchButton.addEventListener('click', renderAllGifs);
-    }
-    
-    function renderAllGifs (event) {
-      event.preventDefault();
-    
-      const parentDiv = document.querySelector('.out');
-      const searchInput = document.querySelector('#search');
-      const searchValue = searchInput.value.trim();
-      const url = encodeURI(https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${searchValue});
-    
-      fetch(url)
-        .then(response => response.json())
-        .then(content => {
-          content.data.map(gif => generateGif(gif, parentDiv));
-          searchInput.value = '';
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    }
-    
-    function generateGif(gif, parentDiv) {
-      const { title, images } = gif;
-    
-      const fig = document.createElement('figure');
-      const img = document.createElement('img');
-      const fc = document.createElement('figcaption');
-    
-      img.src = images.downsized.url;
-      img.alt = title;
-      fc.textContent = title;
-      fig.appendChild(img);
-      fig.appendChild(fc);
-    
-      parentDiv.insertAdjacentElement('afterbegin', fig);
-    }
     </script>
   </body>
 </body>
