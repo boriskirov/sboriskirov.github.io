@@ -121,7 +121,7 @@
 
     </style>
 </head>
-<!-- <body>
+<body>
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
     <symbol viewBox="0 0 24 24" id="search-icon">
         <path fill="currentColor" fill-rule="nonzero" d="M16.32 14.906l4.387 4.387a1 1 0 0 1-1.414 1.414l-4.387-4.387a8 8 0 1 1 1.414-1.414zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
@@ -167,32 +167,5 @@
     })
   
     </script>
-</body> -->
-<body>
-    <div id="box" style="background: red; width: 50px; height: 50px;"></div>
-    <script>    
-    async function createWidget(canvasX, canvasY) {
-        const widget = (await miro.board.widgets.create({type: 'shape', x:canvasX || 0, y:canvasY || 0}))[0]
-        miro.board.viewport.zoomToObject(widget)
-    }
-    
-    const options = {
-      draggableItemSelector: '#box',
-      onClick: async (targetElement) => {
-        createWidget()
-      },
-      getDraggableItemPreview: (targetElement) => { //drag-started
-        return {url: HOTSPOT_PREVIEW}
-      },
-      onDrop: (canvasX, canvasY) => {
-        createWidget(canvasX, canvasY)
-      }
-    }
-    
-    miro.onReady(() => {
-      miro.board.ui.initDraggableItemsContainer(document.body, options)  
-    })
-  
-    </script>
-  </body>
+</body>
 </html>
