@@ -8,7 +8,7 @@ miro.onReady(() => {
         toolbarSvgIcon: icon,
         librarySvgIcon: icon,
 				onClick: function () {
-					miro.board.openLibrary('Dribbble', './library.html')
+					miro.board.openLibrary('Dribbble', '/Dribbble-test/library.html')
 				}
 			}
 		}
