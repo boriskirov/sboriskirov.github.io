@@ -8,7 +8,7 @@ miro.onReady(() => {
         toolbarSvgIcon: icon,
         librarySvgIcon: icon,
 				onClick: function () {
-					miro.board.openLibrary('GIPHY', 'library.html')
+					miro.board.openLibrary('GIPHY', 'https://sboriskirov.github.io/Dribbble-test/library.html')
 				}
 			}
 		}
